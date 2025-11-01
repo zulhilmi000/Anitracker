@@ -173,7 +173,7 @@ function detail_anime() {
 function addToWatchlist() {
     const detailsString = sessionStorage.getItem('currentAnimeDetails');
     if (!detailsString) {
-        alert('❌ Error: Anime details not found in session.');
+        alert('Error: Anime details not found in session.');
         return;
     }
 
@@ -183,7 +183,7 @@ function addToWatchlist() {
     // Check for duplicates
     const existingItem = watchlist.find(item => item.mal_id === itemDetails.mal_id);
     if (existingItem) {
-        alert('⚠️ Item is already in your watchlist!');
+        alert('Item is already in your watchlist!');
         return;
     }
 
@@ -200,9 +200,9 @@ function addToWatchlist() {
     
     try {
         localStorage.setItem('myAnimeTrackerList', JSON.stringify(watchlist));
-        alert(`✅ Success: '${itemDetails.title}' has been added to your watchlist!`); // Success feedback 
+        alert(`Success: '${itemDetails.title}' has been added to your watchlist!`); // Success feedback 
     } catch (e) {
-        alert('❌ Error: Failed to save to local storage.'); // Failure feedback 
+        alert('Error: Failed to save to local storage.'); // Failure feedback 
     }
 }
 
@@ -275,7 +275,7 @@ function updateItem(malId) {
 
         // Input validate
         if (newProgress < 0 || newProgress > maxEpisodes) {
-            alert(`❌ Error: Progress must be between 0 and ${maxEpisodes}.`);
+            alert(`Error: Progress must be between 0 and ${maxEpisodes}.`);
             return;
         }
 
@@ -286,13 +286,13 @@ function updateItem(malId) {
 
         try {
             localStorage.setItem('myAnimeTrackerList', JSON.stringify(watchlist));
-            alert(`✅ Success: Watchlist for '${watchlist[itemIndex].title}' updated successfully!`); // Success feedback 
+            alert(`Success: Watchlist for '${watchlist[itemIndex].title}' updated successfully!`); // Success feedback 
             displayWatchlist(); 
         } catch (e) {
-            alert('❌ Error: Failed to save updates to local storage.'); // Failure feedback 
+            alert('Error: Failed to save updates to local storage.'); // Failure feedback 
         }
     } else {
-        alert('❌ Error: Item not found in watchlist.');
+        alert('Error: Item not found in watchlist.');
     }
 }
 
@@ -311,13 +311,13 @@ function deleteItem(malId) {
     if (newWatchlist.length < originalLength) {
         try {
             localStorage.setItem('myAnimeTrackerList', JSON.stringify(newWatchlist));
-            alert('🗑️ Success: Item removed from watchlist.'); // Success feedback 
+            alert(' Success: Item removed from watchlist.'); // Success feedback 
             displayWatchlist(); 
         } catch (e) {
-            alert('❌ Error: Failed to remove item from local storage.'); // Failure feedback 
+            alert(' Error: Failed to remove item from local storage.'); // Failure feedback 
         }
     } else {
-        alert('❌ Error: Item not found in watchlist.');
+        alert(' Error: Item not found in watchlist.');
     }
 }
 
