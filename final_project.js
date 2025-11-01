@@ -60,9 +60,7 @@ function searchAnime() {
 
     const apiUrl = `https://api.jikan.moe/v4/${type}?q=${name}&limit=10`;
 
-    fetch(apiUrl)
-        .then((response) => response.json())
-        .then((data) => {
+    fetch(apiUrl).then((response) => response.json()).then((data) => {
             const animeList = data.data; 
             if (animeList.length === 0) {
                 display.innerHTML = `<p>No ${type} results found for that title.</p>`;
