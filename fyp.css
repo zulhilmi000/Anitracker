@@ -1,0 +1,249 @@
+:root {
+    --accent-color: #FF1493; 
+    --light-text-color: #FFFFFF;
+    --dark-text-color: #1a1a1a;
+    --card-background: rgba(0, 0, 0, 0.7);
+    --deep-background: #1a1a2e; 
+    --details-container-bg: #0b0b1a; 
+    --delete-color: #e74c3c;
+    --update-color: #2ecc71;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--light-text-color); 
+    padding: 0; 
+    margin: 0;
+    min-height: 100vh;
+    position: relative;
+    background-color: var(--deep-background);
+}
+
+/*  BACKGROUND   */
+#background-image {
+    background-image: url('https://wallpapers.com/images/featured/oshi-no-ko-l128i89n83u721ql.jpg'); 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    opacity: 0.85; 
+    z-index: -1; 
+}
+
+#main-content {
+    position: relative;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05); 
+    min-height: 100vh;
+}
+
+h2 {
+    color: var(--light-text-color); 
+    border-bottom: 2px solid var(--accent-color); 
+    padding-bottom: 5px;
+}
+
+label, p, strong {
+    color: var(--light-text-color); 
+}
+
+/* INPUTS BUTTONS */
+
+input[type="text"], select, textarea {
+    color: var(--dark-text-color); 
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--accent-color);
+    border-radius: 3px;
+    padding: 4px;
+    width: auto;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 100%;
+    min-height: 50px;
+}
+
+/*for Search, View Details, Add to Watchlist*/
+button, .anime-card .view-details {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--dark-text-color); 
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: bold;
+}
+
+button:hover, .anime-card .view-details:hover {
+    background-color: #DD1282; 
+}
+
+/* Navigational Buttons */
+.back-btn, .watchlist-nav-btn {
+    display: inline-block; 
+    background-color: var(--accent-color); 
+    color: var(--dark-text-color) ; 
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 20px; 
+    transition: background-color 0.2s, transform 0.1s;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(255, 20, 147, 0.4); 
+}
+
+.watchlist-nav-btn {
+    background-color: #4CAF50; 
+    color: white;
+}
+.watchlist-nav-btn:hover {
+    background-color: #45a049;
+}
+
+
+/* FIRST SCREEN STYLES  */
+#display {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.anime-card {
+    background-color: var(--card-background); 
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s;
+    color: var(--light-text-color); 
+}
+
+.anime-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+}
+
+.anime-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/*SECOND SCREEN  */
+
+#anime-details-display {
+    background-color: var(--details-container-bg); 
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    color: var(--light-text-color); 
+    max-width: 900px; 
+    margin: 20px auto; 
+}
+
+.detail-info-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+#anime-details-display img {
+    border-radius: 8px;
+    border: 1px solid var(--accent-color);
+}
+
+.add-to-watchlist-btn {
+    /* Uses generic button style but override font size */
+    font-size: 1.1em;
+    display: block; 
+    width: 100%;
+    margin-bottom: 20px; 
+}
+
+/*  THIRD SCREEN STYLES (*/
+
+.watchlist-card {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: var(--card-background); 
+}
+
+.watchlist-info {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+    align-items: center;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+    padding-bottom: 15px;
+}
+
+.watchlist-info img {
+    border: 1px solid var(--accent-color);
+    width: 100px;
+    min-width: 100px;
+    height: auto;
+}
+
+.watchlist-crud {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 15px;
+}
+
+.crud-control {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.crud-control label {
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #f0f0f0;
+}
+
+.full-width {
+    grid-column: 1 / -1; 
+}
+
+/* Update and Delete Button */
+.update-btn {
+    background-color: var(--update-color);
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    grid-column: 1 / 2;
+}
+
+.update-btn:hover {
+    background-color: #27ae60;
+}
+
+.delete-btn {
+    background-color: var(--delete-color);
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    grid-column: 2 / 3;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}

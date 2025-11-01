@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ANITRACKER</title>
+    <link rel="stylesheet" href="fyp.css">
+    <script src="final_project.js"></script>
+
+</head>
+<body>
+    <div id="background-image"></div>
+    
+    <div id="main-content">
+        <h2>Search Anime & Manga</h2>
+        <a href="third_screen.html" class="watchlist-nav-btn">Go to My Watchlist →</a>
+        <hr>
+        <label for="searchType">Search For:</label>
+        <select id="searchType">
+            <option value="anime" selected>Anime Series</option>
+            <option value="manga">Manga Details</option>
+        </select>
+
+        <label for="animetitle">Enter Title:</label>
+        <input type="text" id="animetitle" placeholder="title name">
+        <button onclick="searchAnime()">Enter</button>
+        <br><br>
+
+        <div id="display">
+            </div>
+    </div>
+    
+</body>
+</html>
