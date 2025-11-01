@@ -1,4 +1,40 @@
 
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
+
+function createWindow() {
+  const mainWindow = new BrowserWindow({
+    width: 1000,
+    height: 800,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false, 
+      enableRemoteModule: true 
+    },
+    title: 'ANITRACKER', 
+  });
+
+  mainWindow.loadFile('first_screen.html'); 
+
+}
+
+app.whenReady().then(createWindow);
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
+  }
+});
+
+
+
+
 function getWatchlist() {
     const list = localStorage.getItem('myAnimeTrackerList');
     return list ? JSON.parse(list) : [];
@@ -12,7 +48,8 @@ function getStatusOptions(currentStatus) {
 }
 
 
-// --- FIRST SCREEN ---
+// FIRST SCREEN LOGIC
+
 
 function searchAnime() {
     const name = document.getElementById("animetitle").value;
@@ -51,7 +88,9 @@ function searchAnime() {
 }
 
 
-// --- SECOND SCREEN  ---
+// SECOND SCREEN LOGIC 
+
+//
 function detail_anime() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -65,11 +104,13 @@ function detail_anime() {
         return;
     }
 
+  
     fetch(`https://api.jikan.moe/v4/${type}/${malId}/full`) 
         .then((response) => response.json())
         .then((data) => {
             const item = data.data; 
 
+          
             const itemDetails = {
                 mal_id: item.mal_id,
                 title: item.title,
@@ -132,7 +173,7 @@ function detail_anime() {
 function addToWatchlist() {
     const detailsString = sessionStorage.getItem('currentAnimeDetails');
     if (!detailsString) {
-        alert('Error: Anime details not found in session.');
+        alert('❌ Error: Anime details not found in session.');
         return;
     }
 
@@ -142,11 +183,11 @@ function addToWatchlist() {
     // Check for duplicates
     const existingItem = watchlist.find(item => item.mal_id === itemDetails.mal_id);
     if (existingItem) {
-        alert('Item is already in your watchlist!');
+        alert('⚠️ Item is already in your watchlist!');
         return;
     }
 
-    // Add required tracking properties for CRUD
+    
     const newItem = {
         ...itemDetails,
         status: 'Plan to Watch', 
@@ -159,15 +200,16 @@ function addToWatchlist() {
     
     try {
         localStorage.setItem('myAnimeTrackerList', JSON.stringify(watchlist));
-        alert(`Success: '${itemDetails.title}' has been added to your watchlist!`); // Success feedback 
+        alert(`✅ Success: '${itemDetails.title}' has been added to your watchlist!`); // Success feedback 
     } catch (e) {
-        alert('Error: Failed to save to local storage.'); // Failure feedback 
+        alert('❌ Error: Failed to save to local storage.'); // Failure feedback 
     }
 }
 
 
 //THIRD SCREEN LOGIC 
 
+// Displays the saved watchlist items on third_screen.html
 function displayWatchlist() {
     const watchlist = getWatchlist();
     const displayElement = document.getElementById('watchlist-display');
@@ -219,39 +261,42 @@ function displayWatchlist() {
     displayElement.innerHTML = htmlContent;
 }
 
-// Saves progress, status, and review changes to Local Storage
+//  Saves progress, status, and review changes to Local Storage
 function updateItem(malId) {
     let watchlist = getWatchlist();
     const itemIndex = watchlist.findIndex(item => item.mal_id === malId);
 
     if (itemIndex > -1) {
+      
         const newStatus = document.getElementById(`status-${malId}`).value;
         const newProgress = parseInt(document.getElementById(`progress-${malId}`).value, 10);
         const newReview = document.getElementById(`review-${malId}`).value;
         const maxEpisodes = watchlist[itemIndex].episodes;
 
+        // Input validate
         if (newProgress < 0 || newProgress > maxEpisodes) {
-            alert(`Error: Progress must be between 0 and ${maxEpisodes}.`);
+            alert(`❌ Error: Progress must be between 0 and ${maxEpisodes}.`);
             return;
         }
 
+        // Apply updates
         watchlist[itemIndex].status = newStatus;
         watchlist[itemIndex].progress = newProgress;
         watchlist[itemIndex].review = newReview;
 
         try {
             localStorage.setItem('myAnimeTrackerList', JSON.stringify(watchlist));
-            alert(`Success: Watchlist for '${watchlist[itemIndex].title}' updated successfully!`); // Success feedback 
+            alert(`✅ Success: Watchlist for '${watchlist[itemIndex].title}' updated successfully!`); // Success feedback 
             displayWatchlist(); 
         } catch (e) {
-            alert('Error: Failed to save updates to local storage.'); // Failure feedback 
+            alert('❌ Error: Failed to save updates to local storage.'); // Failure feedback 
         }
     } else {
-        alert('Error: Item not found in watchlist.');
+        alert('❌ Error: Item not found in watchlist.');
     }
 }
 
-// Removes an item from the watchlist
+//  Removes an item from the watchlist
 function deleteItem(malId) {
     if (!confirm('Are you sure you want to remove this item from your watchlist?')) {
         return;
@@ -260,21 +305,19 @@ function deleteItem(malId) {
     let watchlist = getWatchlist();
     const originalLength = watchlist.length;
 
+    // Filter out the item to be deleted
     const newWatchlist = watchlist.filter(item => item.mal_id !== malId);
 
     if (newWatchlist.length < originalLength) {
         try {
             localStorage.setItem('myAnimeTrackerList', JSON.stringify(newWatchlist));
-            alert('Success: Item removed from watchlist.'); // Success feedback 
+            alert('🗑️ Success: Item removed from watchlist.'); // Success feedback 
             displayWatchlist(); 
         } catch (e) {
-            alert('Error: Failed to remove item from local storage.'); // Failure feedback 
+            alert('❌ Error: Failed to remove item from local storage.'); // Failure feedback 
         }
     } else {
-        alert('Error: Item not found in watchlist.');
+        alert('❌ Error: Item not found in watchlist.');
     }
 }
 
-if (window.location.pathname.includes('second_screen.html')) {
-    document.addEventListener('DOMContentLoaded', detail_anime);
-}
