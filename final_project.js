@@ -106,6 +106,7 @@ function detail_anime() {
     fetch(`https://api.jikan.moe/v4/${type}/${malId}/full`) 
         .then((response) => response.json())
         .then((data) => {
+            console.log(data)
             const item = data.data; 
 
           
@@ -118,6 +119,20 @@ function detail_anime() {
             };
             sessionStorage.setItem('currentAnimeDetails', JSON.stringify(itemDetails));
 
+            const trailerHtml = (item.trailer && item.trailer.embed_url)
+                ? `
+                    <div class="trailer-container">
+                        <iframe 
+                            src="${item.trailer.embed_url}" 
+                            width="100%" 
+                            height="315" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                `
+                : '<p>No official trailer available.</p>';
 
             detailsDisplay.innerHTML = `
                 <a href="first_screen.html" class="back-btn">← Back to Search</a>
@@ -155,7 +170,8 @@ function detail_anime() {
                 </div>
 
                 <button class="add-to-watchlist-btn" onclick="addToWatchlist()">Add to Watchlist</button>
-                
+                <h3>Trailer</h3>
+                <p>${trailerHtml}</p>
                 <h3>Synopsis</h3>
                 <p>${item.synopsis}</p>
                 <p><a href="${item.url}" target="_blank">Link to MyAnimeList Website</a></p>

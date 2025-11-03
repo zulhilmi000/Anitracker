@@ -247,3 +247,15 @@ button:hover, .anime-card .view-details:hover {
 .delete-btn:hover {
     background-color: #c0392b;
 }
+
+.trailer-container {
+    /* Optional: to center the iframe if it's smaller than the container */
+    margin: 20px 0;
+    text-align: center; 
+}
+
+/* Ensure the iframe itself takes up the available width */
+.trailer-container iframe {
+    max-width: 100%;
+    /* You can adjust the height based on your layout */
+}
