@@ -1,14 +1,13 @@
-/* --- CSS VARIABLES --- */
 :root {
     --accent-color: #FF1493; /* Deep Pink */
     --light-text-color: #FFFFFF; /* Pure white for maximum contrast */
     --dark-text-color: #1a1a1a;
-    --card-background: rgba(0, 0, 0, 0.85); /* Highly opaque background for cards */
+    --card-background: rgba(0, 0, 0, 0.85); 
     --deep-background: #1a1a2e; 
     --details-container-bg: #070714; 
     --delete-color: #e74c3c;
     --update-color: #2ecc71;
-    --header-bg: rgba(0, 0, 0, 0.8); /* Highly opaque header */
+    --header-bg: rgba(0, 0, 0, 0.8);
 }
 
 /* --- BODY & GENERAL TEXT STYLES --- */
@@ -23,7 +22,6 @@ body {
     overflow-x: hidden; 
 }
 
-/* Global Text Shadow: Essential fix for readability on busy dark backgrounds */
 body, label, p, strong {
     color: var(--light-text-color); 
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.9), 0 0 1px rgba(0, 0, 0, 0.8);
@@ -45,7 +43,6 @@ body, label, p, strong {
     z-index: -1; 
 }
 
-/* Full-screen semi-transparent overlay to further darken the background and aid contrast */
 body::before {
     content: '';
     position: fixed;
