@@ -59,7 +59,7 @@ function searchAnime() {
 
     display.innerHTML = '<h2>Loading results...</h2>'; // Loading feedback
 
-    const apiUrl = `https://api.jikan.moe/v4/${type}?q=${name}&limit=10`;
+    const apiUrl = `https://api.jikan.moe/v4/${type}?q=${name}`;
 
     fetch(apiUrl).then((response) => response.json()).then((data) => {
             const animeList = data.data; 
