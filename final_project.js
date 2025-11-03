@@ -9,7 +9,8 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false, 
-      enableRemoteModule: true 
+      enableRemoteModule: true,
+      webSecurity: false
     },
     title: 'ANITRACKER', 
   });
@@ -119,11 +120,18 @@ function detail_anime() {
             };
             sessionStorage.setItem('currentAnimeDetails', JSON.stringify(itemDetails));
 
-            const trailerHtml = (item.trailer && item.trailer.embed_url)
+            // CORRECTED CODE BLOCK
+            // 1. Create a safe, no-cookie embed URL
+            const videoEmbedUrl = (item.trailer && item.trailer.embed_url)
+                ? item.trailer.embed_url.replace('www.youtube.com', 'www.youtube-nocookie.com')
+                : null;
+
+            // 2. Use the safe URL to construct the HTML
+            const trailerHtml = videoEmbedUrl
                 ? `
                     <div class="trailer-container">
                         <iframe 
-                            src="${item.trailer.embed_url}" 
+                            src="${videoEmbedUrl}" 
                             width="100%" 
                             height="315" 
                             frameborder="0" 
@@ -131,7 +139,7 @@ function detail_anime() {
                             allowfullscreen>
                         </iframe>
                     </div>
-                `
+                    `
                 : '<p>No official trailer available.</p>';
 
             detailsDisplay.innerHTML = `
