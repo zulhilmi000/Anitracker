@@ -1,4 +1,4 @@
-
+//  MUHAMMAD ZULHILMI BIN ROSDAN
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
