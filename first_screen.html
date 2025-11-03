@@ -1,31 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ANITRACKER</title>
     <link rel="stylesheet" href="fyp.css">
-    <script src="final_project.js"></script>
+    <script src="final_project.js"></script> 
 
 </head>
-<body>
+<body onload="displayResearchAnime()"> 
     <div id="background-image"></div>
     
     <div id="main-content">
+        
+        <p class="scenario-text">
+            <strong>AniTracker is evolving into a dynamic, engaging Anime Discovery Hub specifically designed for teenagers.</strong> The core mission is to help students and young enthusiasts easily find their next favorite series or movie. The primary features emphasize quick identification and previewing: users can search for anime by title, and every detail page prominently features the official trailer from MyAnimeList. This allows teenagers to quickly sample a show's style and plot before committing, making their anime discovery process fast, visual, and fun.
+        </p>
+
+        <h1 style="text-align: center; margin-bottom: 20px; color: var(--accent-color);">ANITRACKER</h1>
         <h2>Search Anime & Manga</h2>
-        <a href="third_screen.html" class="watchlist-nav-btn">Go to My Watchlist →</a>
-        <hr>
-        <label for="searchType">Search For:</label>
-        <select id="searchType">
-            <option value="anime" selected>Anime Series</option>
-            <option value="manga">Manga Details</option>
-        </select>
+        
+        <div class="search-controls-wrapper">
+            <a href="third_screen.html" class="watchlist-nav-btn">Go to My Watchlist →</a>
+            
+            <hr style="max-width: 500px; margin: 20px auto;">
 
-        <label for="animetitle">Enter Title:</label>
-        <input type="text" id="animetitle" placeholder="title name">
-        <button onclick="searchAnime()">Enter</button>
-        <br><br>
+            <div class="search-input-group">
+                <label for="searchType">Search For:</label>
+                <select id="searchType">
+                    <option value="anime" selected>Anime Series</option>
+                    <option value="manga">Manga Details</option>
+                </select>
 
-        <div id="display">
+                <label for="animetitle">Enter Title:</label>
+                <input type="text" id="animetitle" placeholder="title name">
+                
+                <button onclick="searchAnime()">Enter</button>
             </div>
+        </div>
+        
+        <div id="display">
+          
+        </div>
     </div>
     
 </body>
