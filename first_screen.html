@@ -6,42 +6,46 @@
     <title>ANITRACKER</title>
     <link rel="stylesheet" href="fyp.css">
     <script src="final_project.js"></script> 
-
 </head>
 <body onload="displayResearchAnime()"> 
     <div id="background-image"></div>
     
     <div id="main-content">
         
-        <p class="scenario-text">
-            <strong>AniTracker is evolving into a dynamic, engaging Anime Discovery Hub specifically designed for teenagers.</strong> The core mission is to help students and young enthusiasts easily find their next favorite series or movie. The primary features emphasize quick identification and previewing: users can search for anime by title, and every detail page prominently features the official trailer from MyAnimeList. This allows teenagers to quickly sample a show's style and plot before committing, making their anime discovery process fast, visual, and fun.
-        </p>
-
-        <h1 style="text-align: center; margin-bottom: 20px; color: var(--accent-color);">ANITRACKER</h1>
-        <h2>Search Anime & Manga</h2>
-        
-        <div class="search-controls-wrapper">
-            <a href="third_screen.html" class="watchlist-nav-btn">Go to My Watchlist →</a>
+        <header id="app-header">
+            <div class="logo">ANITRACKER</div>
             
-            <hr style="max-width: 500px; margin: 20px auto;">
-
             <div class="search-input-group">
-                <label for="searchType">Search For:</label>
+                <label for="searchType" style="margin-right: 5px; white-space: nowrap;">Search For:</label>
                 <select id="searchType">
                     <option value="anime" selected>Anime Series</option>
                     <option value="manga">Manga Details</option>
                 </select>
 
-                <label for="animetitle">Enter Title:</label>
-                <input type="text" id="animetitle" placeholder="title name">
+                <input type="text" id="animetitle" placeholder="Enter title...">
                 
-                <button onclick="searchAnime()">Enter</button>
+                <button onclick="searchAnime()" style="margin-top: 0;">Search</button>
             </div>
-        </div>
-        
-        <div id="display">
-          
-        </div>
+
+            <a href="third_screen.html" class="watchlist-nav-btn">My Watchlist</a>
+        </header>
+
+        <section id="hero-section">
+            <h1 class="hero-title">ANITRACKER</h1>
+            
+            <p class="scenario-text">
+                <strong>AniTracker is evolving into a dynamic, engaging Anime Discovery Hub specifically designed for teenagers.</strong> The core mission is to help students and young enthusiasts easily find their next favorite series or movie. The primary features emphasize quick identification and previewing: users can **search for anime by title**, and every detail page prominently features the **official trailer** from MyAnimeList. This allows teenagers to quickly sample a show's style and plot before committing, making their anime discovery process fast, visual, and fun.
+            </p>
+
+
+        </section>
+
+        <section id="recommended-anime-section">
+           
+            <div id="display">
+               
+            </div>
+        </section>
     </div>
     
 </body>
