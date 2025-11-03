@@ -1,16 +1,14 @@
-/* --- CSS VARIABLES (UNCHANGED) --- */
 :root {
-    --accent-color: #FF1493; /* Deep Pink */
+    --accent-color: #FF1493; 
     --light-text-color: #FFFFFF;
     --dark-text-color: #1a1a1a;
     --card-background: rgba(0, 0, 0, 0.7);
     --deep-background: #1a1a2e; 
-    --details-container-bg: #070714; /* Slightly deeper than main background */
+    --details-container-bg: #070714; 
     --delete-color: #e74c3c;
     --update-color: #2ecc71;
 }
 
-/* --- BODY (REVERTED TO NORMAL FLOW) --- */
 body {
     font-family: Arial, sans-serif;
     color: var(--light-text-color); 
@@ -21,7 +19,7 @@ body {
     background-color: var(--deep-background);
 }
 
-/* --- BACKGROUND (UNCHANGED) --- */
+
 #background-image {
     background-image: url('https://wallpapers.com/images/featured/oshi-no-ko-l128i89n83u721ql.jpg'); 
     position: fixed; 
@@ -36,36 +34,30 @@ body {
     z-index: -1; 
 }
 
-/* --- MAIN CONTENT CONTAINER (AESTHETIC UPGRADE) --- */
 #main-content {
     position: relative;
     padding: 20px;
-    /* Blend better with deep background */
     background-color: rgba(26, 26, 46, 0.8); 
     min-height: 100vh;
     width: 90%; 
     max-width: 900px; 
     margin: 0 auto; 
     text-align: left; 
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 0 30px rgba(255, 20, 147, 0.2); /* Soft glow */
+    border-radius: 10px; 
+    box-shadow: 0 0 30px rgba(255, 20, 147, 0.2); 
 }
 
-/* --- HEADERS AND SCENARIO TEXT (IMPROVED STYLING) --- */
-/* Target only the main ANITRACKER H1 and the "Search Anime & Manga" H2 */
 #main-content h1, 
 #main-content h2 {
     text-align: center;
     width: 100%;
 }
 
-/* Title Glow */
 #main-content h1 {
     text-shadow: 0 0 10px var(--accent-color);
     letter-spacing: 2px;
 }
 
-/* Section Header Styling - BOLD, CAPITALIZED, BORDERED */
 h2 {
     color: var(--light-text-color); 
     border-bottom: 2px solid var(--accent-color); 
@@ -75,28 +67,26 @@ h2 {
     font-weight: 900;
 }
 
-/* SCENARIO TEXT CLASS: Clean and subtle look */
 .scenario-text {
-    /* Subtle background and border to separate it from the deep background */
     background-color: rgba(0, 0, 0, 0.4); 
-    border: 1px solid rgba(255, 20, 147, 0.5); /* Semi-transparent accent border */
+    border: 1px solid rgba(255, 20, 147, 0.5); 
     border-radius: 8px; 
-    padding: 15px 25px; /* More padding for breathing room */
-    margin-bottom: 30px; /* Space below the paragraph */
+    padding: 15px 25px; 
+    margin-bottom: 30px; 
     
-    font-size: 0.95em; /* Slightly smaller for a less imposing look */
+    font-size: 0.95em; 
     font-style: italic;
-    line-height: 1.6; /* Better readability */
-    color: rgba(255, 255, 255, 0.85); /* Slightly muted white text */
-    text-align: justify; /* Justify for a formal, clean block look */
+    line-height: 1.6; 
+    color: rgba(255, 255, 255, 0.85); 
+    text-align: justify; 
 
-    /* Ensure strong text inside is visible */
+ 
     font-weight: normal; 
 }
 
-/* Make key phrases in the scenario stand out */
+
 .scenario-text strong {
-    color: var(--light-text-color); /* Bright white for emphasis */
+    color: var(--light-text-color); 
     font-style: normal;
     font-weight: bold;
 }
@@ -107,7 +97,7 @@ label, p, strong {
 }
 
 
-/* --- FIRST SCREEN SEARCH INPUT GROUP --- */
+
 .search-controls-wrapper {
     width: 100%;
     text-align: center; 
@@ -124,14 +114,13 @@ label, p, strong {
 }
 
 
-/* --- INPUTS & BUTTONS (AESTHETIC UPGRADE) --- */
 input[type="text"], select, textarea {
     color: var(--dark-text-color); 
     background-color: rgba(255, 255, 255, 0.95);
-    border: none; /* Remove default border */
-    border-bottom: 3px solid var(--accent-color); /* Strong accent line */
-    border-radius: 0; /* Sharp corners */
-    padding: 6px 8px; /* Slightly larger padding */
+    border: none; 
+    border-bottom: 3px solid var(--accent-color); 
+    border-radius: 0; 
+    padding: 6px 8px; 
     width: auto;
     box-sizing: border-box;
     display: inline-block;
@@ -141,7 +130,7 @@ input[type="text"], select, textarea {
 input[type="text"]:focus, select:focus {
     outline: none;
     background-color: #FFF;
-    box-shadow: 0 0 10px rgba(255, 20, 147, 0.8); /* Glow on focus */
+    box-shadow: 0 0 10px rgba(255, 20, 147, 0.8); 
 }
 
 textarea {
@@ -149,13 +138,13 @@ textarea {
     min-height: 50px;
 }
 
-/* General Buttons - Sleek, Pill-Shaped Look */
+
 button, .anime-card .view-details, .back-btn, .watchlist-nav-btn {
     display: inline-block;
     background-color: var(--accent-color);
-    color: #FFF; /* White text on pink button */
+    color: #FFF; 
     padding: 10px 20px;
-    border-radius: 20px; /* Pill shape */
+    border-radius: 20px; 
     text-decoration: none;
     border: none;
     cursor: pointer;
@@ -168,13 +157,13 @@ button, .anime-card .view-details, .back-btn, .watchlist-nav-btn {
 
 button:hover, .anime-card .view-details:hover, .watchlist-nav-btn:hover, .back-btn:hover {
     background-color: #DD1282; 
-    transform: translateY(-2px); /* Lift button on hover */
+    transform: translateY(-2px); 
     box-shadow: 0 7px 20px rgba(255, 20, 147, 0.6);
 }
 
-/* Navigational Buttons */
+
 .watchlist-nav-btn {
-    background-color: #4CAF50; /* Green for navigation */
+    background-color: #4CAF50; 
     color: white;
     box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
 }
@@ -184,7 +173,7 @@ button:hover, .anime-card .view-details:hover, .watchlist-nav-btn:hover, .back-b
 }
 
 
-/* --- FIRST SCREEN STYLES (CARDS AESTHETIC UPGRADE) --- */
+
 
 #display {
     display: grid;
@@ -218,14 +207,14 @@ button:hover, .anime-card .view-details:hover, .watchlist-nav-btn:hover, .back-b
     border: 2px solid var(--accent-color); 
 }
 
-/* Ensure the "View Details" button inside the card looks good */
+
 .anime-card .view-details {
     display: block; 
     margin-top: 10px;
 }
 
 
-/* --- SECOND SCREEN (DETAILS AESTHETIC UPGRADE) --- */
+
 
 #anime-details-display {
     background-color: var(--details-container-bg); 
@@ -245,7 +234,7 @@ button:hover, .anime-card .view-details:hover, .watchlist-nav-btn:hover, .back-b
     margin-bottom: 20px;
 }
 
-/* Highlight info labels */
+
 .detail-info-container strong {
     color: var(--accent-color); 
     font-weight: 700;
@@ -263,7 +252,7 @@ button:hover, .anime-card .view-details:hover, .watchlist-nav-btn:hover, .back-b
     margin-bottom: 20px; 
 }
 
-/* --- THIRD SCREEN (WATCHLIST) --- */
+
 
 .watchlist-card {
     display: flex;
@@ -312,7 +301,7 @@ button:hover, .anime-card .view-details:hover, .watchlist-nav-btn:hover, .back-b
     grid-column: 1 / -1; 
 }
 
-/* Update and Delete Button (Inherits base button look but overrides color) */
+
 .update-btn {
     background-color: var(--update-color);
     color: white;
