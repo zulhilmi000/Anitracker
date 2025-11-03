@@ -120,13 +120,10 @@ function detail_anime() {
             };
             sessionStorage.setItem('currentAnimeDetails', JSON.stringify(itemDetails));
 
-            // CORRECTED CODE BLOCK
-            // 1. Create a safe, no-cookie embed URL
             const videoEmbedUrl = (item.trailer && item.trailer.embed_url)
                 ? item.trailer.embed_url.replace('www.youtube.com', 'www.youtube-nocookie.com')
                 : null;
 
-            // 2. Use the safe URL to construct the HTML
             const trailerHtml = videoEmbedUrl
                 ? `
                     <div class="trailer-container">
