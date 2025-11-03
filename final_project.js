@@ -88,7 +88,7 @@ function searchAnime() {
 
 // SECOND SCREEN LOGIC 
 
-//
+
 function detail_anime() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
