@@ -41,4 +41,11 @@ A desktop anime and manga discovery and tracking app built with **Electron**. Se
 
 Data is stored under the key `myAnimeTrackerList` in `localStorage`.
 
-## Project structure
+## API & attribution
+Anime and manga metadata are provided by **[Jikan](https://jikan.moe/)**, an unofficial MyAnimeList API. Please respect [Jikan's usage guidelines](https://docs.api.jikan.moe/) and rate limits when using or extending this project.
+
+## Author
+**Muhammad Zulhilmi Bin Rosdan**
+
+---
+*Built as a Final Year Project (FYP) — an anime discovery hub aimed at helping students and young fans find and preview their next series quickly.*
